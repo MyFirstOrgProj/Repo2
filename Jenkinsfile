@@ -3,7 +3,10 @@ properties([
     [$class: 'GithubProjectProperty',
     displayName: '',
     projectUrlStr: 'https://github.com/MyFirstOrgProj/Repo2.git/'],
-    pipelineTriggers([githubPush()])])
+    pipelineTriggers([upstream(
+   threshold: 'SUCCESS',
+   upstreamProjects: 'https://github.com/MyFirstOrgProj/Repo1.git'
+   )])])
 
 pipeline {
     agent any 
